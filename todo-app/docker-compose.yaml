@@ -1,0 +1,4 @@
+services:
+  todo-app:
+    image: palolaur/todo-app
+    build: .
