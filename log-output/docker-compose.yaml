@@ -1,0 +1,4 @@
+services:
+  log-output:
+    image: palolaur/log-output
+    build: .
