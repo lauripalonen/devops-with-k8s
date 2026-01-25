@@ -17,4 +17,4 @@ spec:
           image: palolaur/todo-app:latest
           env:
             - name: PORT
-              value: "3002kubectl apply -f manifests/deployment.yaml"
+              value: "3002"
