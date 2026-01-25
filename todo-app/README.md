@@ -1,11 +1,12 @@
-# Todo app
+# To Do app
 
-For now, this app only has a single server that responds with given PORT number, if given.
+A base for single page To Do application.
 
 ## Instructions
-Ensure you have a `.env` file with `PORT` defined.
 
 For just running the container, run `docker run palolaur/todo-app`.
+
+You can also use `docker compose build` and `docker compose up` for running the container. In [docker-compose.yaml](./docker-compose.yaml) you can define the PORT environment variable as desired.
 
 For deploying, run `kubectl create deployment todo-app --image=palolaur/todo-app`
 
