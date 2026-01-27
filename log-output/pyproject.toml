@@ -1,7 +1,9 @@
 [project]
-name = "log-output"
+name = "log-output-new"
 version = "0.1.0"
-description = "Random string logger"
+description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.14"
-dependencies = []
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.128.0",
+]
