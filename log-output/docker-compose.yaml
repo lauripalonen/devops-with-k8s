@@ -1,6 +1,9 @@
 services:
-  log-output:
-    image: palolaur/log-output
-    build: .
+  string-generator:
+    image: palolaur/string-generator
+    build: ./string-generator
+  log-server:
+    image: palolaur/log-server
+    build: ./server
     ports:
       - "8000:8000"

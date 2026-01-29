@@ -12,6 +12,17 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
       containers:
-        - name: log-output
-          image: palolaur/log-output:latest
+        - name: log-server
+          image: palolaur/log-server@sha256:d4fbcd44d760bc037a03aa259f3ed72387352907265e451787ae41669cabd836
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
+        - name: string-generator
+          image: palolaur/string-generator@sha256:9a5c504880cd5d65bcb899a7775184f7263f6481550aaea81bd814d32f2ed22b
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
