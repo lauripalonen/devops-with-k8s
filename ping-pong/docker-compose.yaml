@@ -1,6 +1,6 @@
 services:
   log-output:
-    image: palolaur/log-output
+    image: palolaur/pingpong
     build: .
     ports:
       - "8000:8000"
