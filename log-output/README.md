@@ -1,21 +1,26 @@
 # log-output
 
-This directory contains two apps: string-generator and server.
+**Version 1.11. notes**:
+- Three apps ([log-output server](./server), [log-output string-generator](./string-generator) and [ping-pong](../ping-pong)) now use a shared persistent volume 
+- relevant updates:
+  - [log-output/manifests/deployment.yaml](./manifests/deployment.yaml) has a persistent volume claimed
+  - [pingpong/manifests/deployment.yaml](../pingpong/manifests/deployment.yaml) has a persistent volume claimed
+  - [root/manifests](../manifests) has [persistentvolume.yaml](../manifests/persistentvolume.yaml) and [persistentvolumeclaim.yaml](../manifests/persistentvolumeclaim.yaml) files for configuring the persistent volume
 
-> [!NOTE]
-> The file sharing between the two apps requires K8s deployment.
+This directory contains two apps: string-generator and server. The file sharing between the two apps requires K8s deployment.
 
 ## string-generator
 
 - creates a logs.txt file
 - generates a random string on startup
-- appends the string with current timestamp to the logs.txt file every 5 seconds
+- writes the string with current timestamp to the logs.txt file every 5 seconds
 
 ## server
 
 - reads logs.txt file
-- serves the file contents in port 8000
+- reads pongs.txt
+- serves the files contents in port 8000
 
 ## Instructions
 
-Have a kubernetes cluster running, and apply the deployment running `kubectl apply -f manifests`. The logs should be then visible at localhost:8081.
+Have a kubernetes cluster running, and apply the deployment running `kubectl apply -f manifests` (this needs to be run for the [root manifests](../manifests) as well). The logs should be then visible at localhost:8081.
