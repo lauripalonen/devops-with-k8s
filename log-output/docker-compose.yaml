@@ -1,9 +1,17 @@
 services:
   string-generator:
-    image: palolaur/string-generator
-    build: ./string-generator
+    image: palolaur/string-generator:${APP_VERSION}
+    build:
+      context: ./string-generator
+      tags:
+        - palolaur/string-generator:${APP_VERSION}
+        - palolaur/string-generator:latest
   log-server:
-    image: palolaur/log-server
-    build: ./server
+    image: palolaur/log-server:${APP_VERSION}
+    build:
+      context: ./server
+      tags:
+        - palolaur/log-server:${APP_VERSION}
+        - palolaur/log-server:latest
     ports:
       - "8000:8000"

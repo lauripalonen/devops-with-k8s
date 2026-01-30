@@ -1,6 +1,10 @@
 services:
   log-output:
     image: palolaur/pingpong
-    build: .
+    build:
+      context: .
+      tags:
+        - palolaur/pingpong:${APP_VERSION}
+        - palolaur/pingpong:latest
     ports:
       - "8000:8000"

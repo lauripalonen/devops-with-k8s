@@ -14,15 +14,16 @@ spec:
     spec:
       volumes:
         - name: shared-logs
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: logger-claim
       containers:
         - name: log-server
-          image: palolaur/log-server@sha256:d4fbcd44d760bc037a03aa259f3ed72387352907265e451787ae41669cabd836
+          image: palolaur/log-server@sha256:c0935affbda78a326b2de75da198fc2afe2da026a55ec9b8d8d277a7d12537f0
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files
         - name: string-generator
-          image: palolaur/string-generator@sha256:9a5c504880cd5d65bcb899a7775184f7263f6481550aaea81bd814d32f2ed22b
+          image: palolaur/string-generator@sha256:79273472591cf33fb2d54050f8fd18bceae1d64b0019f35c768b69f5e8a23584
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files

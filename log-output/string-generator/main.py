@@ -12,8 +12,8 @@ def main():
     while True:
         curr_time = datetime.datetime.now().isoformat()
         log = f"{curr_time}: {output_str}"
-        with open(file_path, "a") as f:
-            f.write(log + "\n")
+        with open(file_path, "w") as f:
+            f.write(log)
         time.sleep(5)
 
 if __name__ == "__main__":

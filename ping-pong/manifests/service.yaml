@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: pingpong
+    app: ping-pong
   ports:
     - port: 2345
       protocol: TCP
