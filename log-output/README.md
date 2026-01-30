@@ -5,7 +5,7 @@
 - relevant updates:
   - [log-output/manifests/deployment.yaml](./manifests/deployment.yaml) has a persistent volume claimed
   - [pingpong/manifests/deployment.yaml](../pingpong/manifests/deployment.yaml) has a persistent volume claimed
-  - [root/manifests](../manifests) has [persistentvolume.yaml](../manifests/persistentvolume.yaml) and [persistentvolumeclaim.yaml](../manifests/persistentvolumeclaim.yaml) files for configuring the persistent volume
+  - [log-output/persistent_volume](./persistent_volume) has files for configuring the persistent volume
 
 This directory contains two apps: string-generator and server. The file sharing between the two apps requires K8s deployment.
 
@@ -23,4 +23,4 @@ This directory contains two apps: string-generator and server. The file sharing 
 
 ## Instructions
 
-Have a kubernetes cluster running, and apply the deployment running `kubectl apply -f manifests` (this needs to be run for the [root manifests](../manifests) as well). The logs should be then visible at localhost:8081.
+Have a kubernetes cluster running, and apply the deployment running `kubectl apply -f manifests` (this needs to be run for the [./persistent_volume](./persistent_volume) as well). The logs should be then visible at localhost:8081.
