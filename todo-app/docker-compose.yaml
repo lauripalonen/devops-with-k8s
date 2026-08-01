@@ -1,8 +1,13 @@
 services:
   todo-app:
-    build: .
+    image: palolaur/todo-app:${APP_VERSION}
+    build:
+      context: .
+      tags:
+        - palolaur/todo-app:${APP_VERSION}
+        - palolaur/todo-app:latest
     environment:
       - PORT=3000
+      - IMAGE_STORAGE=/usr/src/app/files
     ports:
       - "3000:3000"
-    image: palolaur/todo-app:v1.5
