@@ -1,6 +1,6 @@
 # To Do app
 
-A base for single page To Do application. Displays a random image that changes every 10 minutes.
+A base for single page To Do application. Displays a random image that changes every 10 minutes. Shows an input for adding todos, and a hardcoded list of todos. Actual functionality of adding is not yet implemented.
 
 ## Instructions
 

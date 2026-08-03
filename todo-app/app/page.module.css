@@ -83,6 +83,18 @@
   font-weight: 500;
 }
 
+.formSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+  margin: 16px 0;
+}
+
+.input {
+  margin-right: 8px;
+}
+
 a.primary {
   background: var(--text-primary);
   color: var(--background);

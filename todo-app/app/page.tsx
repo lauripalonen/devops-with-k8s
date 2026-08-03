@@ -15,6 +15,29 @@ export default async function Home() {
             unoptimized
           />
         </div>
+        <div>
+          <form className={styles.formSection}>
+            <label htmlFor="new-todo">
+              Enter a new todo (max 140 characters):
+            </label>
+            <div className={styles.formRow}>
+              <input
+                id="new-todo"
+                type="text"
+                placeholder="Fetch groceries"
+                maxLength={140}
+                className={styles.input}
+              />
+              <button type="submit">Send</button>
+            </div>
+          </form>
+          <h2>Todos</h2>
+          <ul>
+            <li>Learn kubernetes basics</li>
+            <li>Deploy application to cluster</li>
+            <li>Configure persistent volumes</li>
+          </ul>
+        </div>
       </main>
     </div>
   );
