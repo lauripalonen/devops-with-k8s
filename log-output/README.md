@@ -28,3 +28,17 @@ Once both applications are deployed, use port-forward for accessing the applicat
 `kubectl port-forward ping-pong-<pod-id> 8083:8000`
 
 Now you can call the ping-pong API at localhost:8083/pingpong. You should now see in localhost:8082 the random string and ping / pong count that is incremented by a GET to the `/pingpong` API.
+
+## Images
+
+**ping-pong API**: `/pingpong` endpoint:  
+
+![](https://github.com/lauripalonen/devops-with-k8s/blob/main/log-output/images/Screenshot%202026-08-06%20at%2016.41.23.png)  
+
+**log-output application**:
+
+![](https://github.com/lauripalonen/devops-with-k8s/blob/main/log-output/images/Screenshot%202026-08-06%20at%2016.41.26.png)  
+
+**ping-pong API**: `/pings` endpoint called by the log-output for getting the ping-pong count.  
+
+![](https://github.com/lauripalonen/devops-with-k8s/blob/main/log-output/images/Screenshot%202026-08-06%20at%2016.41.30.png)
