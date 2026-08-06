@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from pathlib import Path
+import httpx2
 
 str_file_path = Path('/usr/src/app/files/logs.txt')
 str_file_path.parent.mkdir(exist_ok=True, parents=True)
 
-pongs_file_path = Path('/usr/src/app/files/pongs.txt')
-pongs_file_path.parent.mkdir(exist_ok=True, parents=True)
+#pongs_file_path = Path('/usr/src/app/files/pongs.txt')
+#pongs_file_path.parent.mkdir(exist_ok=True, parents=True)
 
 app = FastAPI()
 
@@ -21,16 +22,18 @@ async def root():
         timestamp_str = "No log data available."
 
     try:
-        pong_count = pongs_file_path.read_text().strip()
-    except FileNotFoundError:
-        pong_count = "Pongs: 0"
+       async with httpx2.AsyncClient() as client:
+            response = await client.get("http://pingpong-svc:2345/pings")
+            pong_count = response.text.strip()
+    except Exception as e:
+        pong_count = f"Error fetching pong count: {e}"
 
 
     html_content = f"""
     <html>
         <body>
             <p>{timestamp_str}</p>
-            <p>{pong_count}</p>
+            <p>Ping / Pongs: {pong_count}</p>
         </body>
     </html>
     """

@@ -12,13 +12,13 @@ spec:
       labels:
         app: ping-pong
     spec:
-      volumes:
-        - name: shared-logs
-          persistentVolumeClaim:
-            claimName: logger-claim
+      #volumes:
+      #  - name: shared-logs
+      #    persistentVolumeClaim:
+      #      claimName: logger-claim
       containers:
         - name: ping-pong
-          image: palolaur/pingpong@sha256:ca8aa404c06e05fa59685e43f3a1065e8144074f75e4d8ad1ddc0ddd026f277d
-          volumeMounts:
-            - name: shared-logs
-              mountPath: /usr/src/app/files
+          image: palolaur/pingpong:1.14
+          #volumeMounts:
+          #  - name: shared-logs
+          #    mountPath: /usr/src/app/files
