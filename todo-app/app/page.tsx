@@ -1,7 +1,14 @@
 import styles from "./page.module.css";
 import Image from "next/image";
+import { addTodo, getTodos } from "./actions";
 
 export default async function Home() {
+  const { todos, error } = await getTodos();
+
+  if (error) {
+    console.error(error);
+  }
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -16,13 +23,14 @@ export default async function Home() {
           />
         </div>
         <div>
-          <form className={styles.formSection}>
+          <form className={styles.formSection} action={addTodo}>
             <label htmlFor="new-todo">
               Enter a new todo (max 140 characters):
             </label>
             <div className={styles.formRow}>
               <input
                 id="new-todo"
+                name="todo"
                 type="text"
                 placeholder="Fetch groceries"
                 maxLength={140}
@@ -33,9 +41,9 @@ export default async function Home() {
           </form>
           <h2>Todos</h2>
           <ul>
-            <li>Learn kubernetes basics</li>
-            <li>Deploy application to cluster</li>
-            <li>Configure persistent volumes</li>
+            {todos.map((todo: string, index: number) => (
+              <li key={index}>{todo}</li>
+            ))}
           </ul>
         </div>
       </main>

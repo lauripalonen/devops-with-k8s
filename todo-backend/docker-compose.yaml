@@ -1,0 +1,13 @@
+services:
+  todo-backend:
+    image: palolaur/todo-backend:${APP_VERSION}
+    build:
+      context: .
+      tags:
+        - palolaur/todo-backend:${APP_VERSION}
+        - palolaur/todo-backend:latest
+    environment:
+      - PORT=3003
+      - HOSTNAME=0.0.0.0
+    ports:
+      - "3003:3003"

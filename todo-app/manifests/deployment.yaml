@@ -18,12 +18,14 @@ spec:
             claimName: image-claim
       containers:
         - name: todo-app
-          image: palolaur/todo-app:1.13
+          image: palolaur/todo-app:2.2
           env:
             - name: PORT
               value: "3002"
             - name: IMAGE_STORAGE
               value: "/app/files"
+            - name: TODO_SERVICE_URL
+              value: "http://todo-backend-service:3003"
           volumeMounts:
             - name: cached-image
               mountPath: /app/files
