@@ -15,3 +15,7 @@ For checking that the server responsed with the port number, run `kubectl logs -
 In deployment manifest, the PORT env is set as **3002**. After deploying, you can run `kubectl port-forward todo-app-<pod-id> 3000:3002` to forward the container port 3002 to your port 3000.
 
 When running locally, a env variable `IMAGE_STORAGE` is expected, for the path for storing the image.
+
+## Connection to todo-backend service
+
+To Do app gets list of todo-items via [todo-backend service](../todo-backend). Also, when a new item is submitted via the form in the frontend, it gets posted to the backend. For now, the items are stored in memory of the backend.
