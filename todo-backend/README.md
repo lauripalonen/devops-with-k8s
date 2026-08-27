@@ -6,4 +6,4 @@ Simple backend for serving and storing to-do items. For now, the items are store
 
 Run `kubectl apply -f manifests` to setup deployment and service.  
 
-Follow [todo-app instructions](todo-app) for setuping the frontend, and running the app locally.
+Follow [todo-app instructions](../todo-app) for setuping the frontend, and running the app locally.
