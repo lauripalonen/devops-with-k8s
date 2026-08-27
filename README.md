@@ -23,3 +23,4 @@ Submissions for University of Helsinki course DevOps with Kubernetes
 ### Chapter 3
 
 [2.1.](https://github.com/lauripalonen/devops-with-k8s/tree/2.1/log-output)  
+[2.2.](https://github.com/lauripalonen/devops-with-k8s/tree/2.2/todo-backend)  
