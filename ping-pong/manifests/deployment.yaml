@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: exercises
   name: ping-pong
 spec:
   replicas: 1
@@ -18,7 +19,7 @@ spec:
       #      claimName: logger-claim
       containers:
         - name: ping-pong
-          image: palolaur/pingpong:1.14
+          image: palolaur/pingpong:2.3
           #volumeMounts:
           #  - name: shared-logs
           #    mountPath: /usr/src/app/files
