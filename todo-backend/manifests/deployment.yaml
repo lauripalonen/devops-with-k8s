@@ -15,9 +15,7 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: palolaur/todo-backend:2.4
-          env:
-            - name: PORT
-              value: "3003"
-            - name: HOSTNAME
-              value: "0.0.0.0"
+          image: palolaur/todo-backend:2.6
+          envFrom:
+            - configMapRef:
+                name: todo-backend-configmap

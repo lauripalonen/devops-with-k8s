@@ -2,7 +2,11 @@ import { NextResponse, NextRequest } from "next/server";
 import { promises as fs } from "fs";
 
 const IMG_PATH = process.env.IMAGE_STORAGE;
-const EXPIRATION_TIME = 10 * 60 * 1000;
+const IMAGE_SOURCE_URL = process.env.IMAGE_SOURCE_URL || "";
+const EXPIRATION_TIME = parseInt(
+  process.env.IMAGE_EXPIRATION_TIME || "600000",
+  10,
+);
 
 export async function GET(
   req: NextRequest,
@@ -13,7 +17,7 @@ export async function GET(
   try {
     await fs.access(`${IMG_PATH}/${filename}`);
   } catch (error) {
-    const newImage = await fetch("https://picsum.photos/200");
+    const newImage = await fetch(IMAGE_SOURCE_URL);
     const imageBuffer = await newImage.arrayBuffer();
     await fs.writeFile(`${IMG_PATH}/${filename}`, Buffer.from(imageBuffer));
   }
@@ -24,7 +28,7 @@ export async function GET(
   const fileAge = Date.now() - fileStats.mtime.getTime();
 
   if (fileAge > EXPIRATION_TIME) {
-    const newImage = await fetch("https://picsum.photos/200");
+    const newImage = await fetch(IMAGE_SOURCE_URL);
     const imageBuffer = await newImage.arrayBuffer();
     await fs.writeFile(`${IMG_PATH}/${filename}`, Buffer.from(imageBuffer));
   }
