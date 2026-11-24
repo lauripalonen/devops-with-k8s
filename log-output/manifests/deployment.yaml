@@ -5,6 +5,8 @@ metadata:
   name: log-output
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: log-output
@@ -17,14 +19,29 @@ spec:
         - name: shared-logs
           persistentVolumeClaim:
             claimName: logger-claim
+        - name: config-volume
+          configMap:
+            name: log-output-configmap
+            items:
+              - key: information.txt
+                path: information.txt
       containers:
         - name: log-server
-          image: palolaur/log-server:2.3
+          image: palolaur/log-server:2.5
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files
+            - name: config-volume
+              mountPath: /usr/src/app/files/information.txt
+              subPath: information.txt
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: log-output-configmap
+                  key: MESSAGE
         - name: string-generator
-          image: palolaur/string-generator:2.3
+          image: palolaur/string-generator:2.5
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files
