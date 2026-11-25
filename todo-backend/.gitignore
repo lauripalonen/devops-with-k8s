@@ -32,3 +32,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# compiled output
+/dist/
+/server.js
+/server.js.map
+/server.d.ts
+/server.d.ts.map
