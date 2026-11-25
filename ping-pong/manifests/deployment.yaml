@@ -19,7 +19,27 @@ spec:
       #      claimName: logger-claim
       containers:
         - name: ping-pong
-          image: palolaur/pingpong:2.3
+          image: palolaur/pingpong:2.7
+          env:
+            - name: POSTGRES_HOST
+              value: psql-svc
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: psql-credentials
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: psql-credentials
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: psql-credentials
+                  key: POSTGRES_PASSWORD
           #volumeMounts:
           #  - name: shared-logs
           #    mountPath: /usr/src/app/files
