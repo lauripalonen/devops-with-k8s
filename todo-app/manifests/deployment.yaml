@@ -19,7 +19,8 @@ spec:
             claimName: image-claim
       containers:
         - name: todo-app
-          image: palolaur/todo-app:2.6
+          image: palolaur/todo-app:2.9
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: todo-app-configmap

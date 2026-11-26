@@ -1,0 +1,9 @@
+services:
+  article-getter:
+    image: palolaur/article-getter:1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - palolaur/article-getter:1.0
+        - palolaur/article-getter:latest

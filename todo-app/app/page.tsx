@@ -2,6 +2,8 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { addTodo, getTodos } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const { todos, error } = await getTodos();
 
@@ -40,6 +42,7 @@ export default async function Home() {
             </div>
           </form>
           <h2>Todos</h2>
+          {error && <p role="alert">Could not load todos. Please try again.</p>}
           <ul>
             {todos.map((todo: string, index: number) => (
               <li key={index}>{todo}</li>

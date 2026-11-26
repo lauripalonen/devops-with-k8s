@@ -16,4 +16,4 @@ In deployment manifest, the PORT env is set as **3002**. After deploying, you ca
 
 ## Connection to todo-backend service
 
-To Do app gets list of todo-items via [todo-backend service](../todo-backend). Also, when a new item is submitted via the form in the frontend, it gets posted to the backend. For now, the items are stored in memory of the backend.
+The To Do app gets its list of items from the [todo-backend service](../todo-backend) and posts new items to it. The backend stores the items in PostgreSQL. There's a scheduled CronJob in backend pushing random wikipedia article once in an hour to the to-do list.
