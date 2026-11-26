@@ -48,12 +48,32 @@ app.get("/todos", async (_req, res) => {
 
 app.post("/todos", async (req, res) => {
   const todo: unknown = req.body?.todo;
+  console.log(JSON.stringify({ event: "todo_received", todo }));
+
   if (typeof todo !== "string") {
+    console.warn(
+      JSON.stringify({ event: "todo_rejected", reason: "invalid_type", todo }),
+    );
     res.status(400).send("Invalid todo item.");
     return;
   }
 
+  if (todo.length > 140) {
+    console.warn(
+      JSON.stringify({
+        event: "todo_rejected",
+        reason: "too_long",
+        length: todo.length,
+        todo,
+      }),
+    );
+    res.status(400).send(`Too long todo item: ${todo}`);
+    return;
+  }
+
   await pool.query("INSERT INTO todos (todo) VALUES ($1)", [todo]);
+
+  console.log(JSON.stringify({ event: "todo_created", todo }));
 
   res.status(201).json({ message: "Todo item created successfully." });
 });

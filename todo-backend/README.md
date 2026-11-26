@@ -1,6 +1,6 @@
 # To Do backend
 
-Simple backend for serving and storing to-do items. For now, the items are stored in memory.
+Simple backend for serving to-do items stored in PostgreSQL.
 
 ## Instructions
 

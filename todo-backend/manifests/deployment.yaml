@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: palolaur/todo-backend:2.9
+          image: palolaur/todo-backend:2.10
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: todo-backend-configmap
